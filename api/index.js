@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const { createServer } = require("http");
-const { auth } = require("express-oauth2-bearer");
+const { auth, requiredScopes } = require("express-oauth2-bearer");
 const {
   checkUrl,
   APP_URL, // Public URL for this app
@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 });
 /****************************/
 
-app.get("/total", (req, res) => {
+app.get("/total", requiredScopes('read:reports'), (req, res) => {
   const total = expenses.reduce((accum, expense) => accum + expense.value, 0);
   res.send({ total, count: expenses.length });
 });
