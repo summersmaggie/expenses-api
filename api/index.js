@@ -17,18 +17,6 @@ app.use(checkUrl());
 
 app.use(cors());
 
-const expenses = [
-  {
-    date: new Date(),
-    description: "Pizza for a Coding Dojo session.",
-    value: 102,
-  },
-  {
-    date: new Date(),
-    description: "Coffee for a Coding Dojo session.",
-    value: 42,
-  },
-];
 
 /****************************
  * This method is here to allow a
